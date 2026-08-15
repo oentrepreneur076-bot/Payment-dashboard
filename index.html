@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#eef2f7;color:#172033}
+.top{background:#14233d;color:white;padding:22px}
+.top h1{margin:0}
+.container{max-width:850px;margin:auto;padding:25px}
+.panel{background:white;border-radius:14px;padding:22px;margin-bottom:20px;box-shadow:0 5px 20px rgba(0,0,0,.07)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+label{display:block;font-size:13px;color:#687386;margin-bottom:6px}
+input,select{width:100%;padding:11px;border:1px solid #d8dde5;border-radius:8px}
+button{margin-top:18px;padding:11px 20px;border:0;border-radius:8px;background:#14233d;color:white;font-weight:bold}
+.row{display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid #e5e8ed}
+.note{margin-top:18px;padding:13px;background:#f4f6f9;border-radius:8px;font-size:13px;color:#606b7a}
+@media(max-width:600px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+
+<body>
+
+<div class="top">
+  <h1>Payment Record Dashboard</h1>
+  <p>Admin Record Management</p>
+</div>
+
+<div class="container">
+
+<div class="panel">
+<h2>Edit Record</h2>
+
+<div class="grid">
+
+<div>
+<label>Customer Name</label>
+<input id="nameInput" placeholder="Enter customer name">
+</div>
+
+<div>
+<label>Transaction ID</label>
+<input id="txnInput" placeholder="Enter actual transaction ID">
+</div>
+
+<div>
+<label>USD Amount</label>
+<input id="usdInput" placeholder="0.00">
+</div>
+
+<div>
+<label>INR Amount</label>
+<input id="inrInput" placeholder="0.00">
+</div>
+
+<div>
+<label>Status</label>
+<select id="statusInput">
+<option>Pending Verification</option>
+<option>Transferred</option>
+<option>Completed</option>
+</select>
+</div>
+
+<div>
+<label>Actual Bank Charge</label>
+<input id="chargeInput" placeholder="0.00">
+</div>
+
+</div>
+
+<button onclick="saveRecord()">Save Record</button>
+</div>
+
+
+<div class="panel">
+<h2>Transaction Record</h2>
+
+<div class="row">
+<span>Customer Name</span>
+<strong id="name">—</strong>
+</div>
+
+<div class="row">
+<span>Transaction ID</span>
+<strong id="txn">—</strong>
+</div>
+
+<div class="row">
+<span>USD Amount</span>
+<strong id="usd">$0.00</strong>
+</div>
+
+<div class="row">
+<span>INR Amount</span>
+<strong id="inr">₹0.00</strong>
+</div>
+
+<div class="row">
+<span>Status</span>
+<strong id="status">Pending Verification</strong>
+</div>
+
+<div class="row">
+<span>Actual Bank Charge</span>
+<strong id="charge">₹0.00</strong>
+</div>
+
+<div class="note">
+Independent payment record. Verify actual transfers through the
+relevant bank account or official bank statement.
+</div>
+
+</div>
+</div>
+
+<script>
+function saveRecord(){
+
+document.getElementById("name").textContent =
+document.getElementById("nameInput").value || "—";
+
+document.getElementById("txn").textContent =
+document.getElementById("txnInput").value || "—";
+
+document.getElementById("usd").textContent =
+"$" + (document.getElementById("usdInput").value || "0.00");
+
+document.getElementById("inr").textContent =
+"₹" + (document.getElementById("inrInput").value || "0.00");
+
+document.getElementById("status").textContent =
+document.getElementById("statusInput").value;
+
+document.getElementById("charge").textContent =
+"₹" + (document.getElementById("chargeInput").value || "0.00");
+}
+</script>
+
+</body>
+</html>
